@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMOSG - Associação Comunitária do Saco Grande</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(0, 82, 147, 0.8) 0%, rgba(0, 180, 216, 0.8) 100%);
+        }
+        
+        .wave-shape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        
+        .wave-shape svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+        }
+        
+        .wave-shape .shape-fill {
+            fill: #FFFFFF;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container {
+            overflow: hidden;
+            padding-bottom: 56.25%;
+            position: relative;
+            height: 0;
+        }
+        
+        .map-container iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="https://via.placeholder.com/50" alt="Logo COMOSG" class="h-12 w-12 rounded-full">
+                    <div class="ml-3">
+                        <h1 class="text-xl font-bold text-blue-800">COMOSG</h1>
+                        <p class="text-xs text-gray-600">Associação Comunitária do Saco Grande</p>
+                    </div>
+                </div>
+                
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-8">
+                        <li><a href="#inicio" class="text-blue-800 hover:text-blue-600 font-medium">Início</a></li>
+                        <li><a href="#sobre" class="text-gray-700 hover:text-blue-600 font-medium">Sobre</a></li>
+                        <li><a href="#eventos" class="text-gray-700 hover:text-blue-600 font-medium">Eventos</a></li>
+                        <li><a href="#noticias" class="text-gray-700 hover:text-blue-600 font-medium">Notícias</a></li>
+                        <li><a href="#contato" class="text-gray-700 hover:text-blue-600 font-medium">Contato</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="md:hidden text-blue-800" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="hidden bg-white w-full py-4 shadow-lg" id="mobile-menu">
+            <ul class="flex flex-col space-y-3 px-4">
+                <li><a href="#inicio" class="block py-2 text-blue-800 font-medium">Início</a></li>
+                <li><a href="#sobre" class="block py-2 text-gray-700 font-medium">Sobre</a></li>
+                <li><a href="#eventos" class="block py-2 text-gray-700 font-medium">Eventos</a></li>
+                <li><a href="#noticias" class="block py-2 text-gray-700 font-medium">Notícias</a></li>
+                <li><a href="#contato" class="block py-2 text-gray-700 font-medium">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-24 pb-32 relative" id="inicio">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Juntos por um Saco Grande melhor</h1>
+                    <p class="text-xl text-white mb-8">A COMOSG trabalha para fortalecer a comunidade e melhorar a qualidade de vida no bairro Saco Grande, Florianópolis.</p>
+                    <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+                        <a href="#contato" class="bg-white text-blue-800 font-bold py-3 px-6 rounded-lg text-center hover:bg-gray-100 transition duration-300">Participe</a>
+                        <a href="#sobre" class="border-2 border-white text-white font-bold py-3 px-6 rounded-lg text-center hover:bg-white hover:text-blue-800 transition duration-300">Conheça mais</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://via.placeholder.com/500x350" alt="Comunidade do Saco Grande" class="rounded-lg shadow-xl w-full max-w-md">
+                </div>
+            </div>
+        </div>
+        
+        <div class="wave-shape">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white" id="sobre">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-800 mb-4">Sobre a COMOSG</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">A Associação Comunitária do Saco Grande (COMOSG) foi fundada em 1985 com o objetivo de representar os interesses dos moradores e promover o desenvolvimento sustentável do bairro.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-8">
+                    <img src="https://via.placeholder.com/600x400" alt="História do Saco Grande" class="rounded-lg shadow-md w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Nossa História</h3>
+                    <p class="text-gray-600 mb-6">O Saco Grande é um bairro tradicional de Florianópolis, conhecido por sua beleza natural e comunidade acolhedora. A COMOSG surgiu da necessidade de organizar os moradores para enfrentar desafios comuns e melhorar a qualidade de vida no bairro.</p>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-xl font-semibold text-blue-700 mb-2">Nossos Valores</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700">Democracia e participação comunitária</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700">Respeito ao meio ambiente</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700">Desenvolvimento sustentável</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span class="text-gray-700">Valorização da cultura local</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-600">
+                        <h4 class="text-lg font-semibold text-blue-800 mb-2">Nossa Missão</h4>
+                        <p class="text-gray-700">"Representar os interesses da comunidade do Saco Grande, promovendo melhorias urbanas, preservando o meio ambiente e fortalecendo os laços comunitários."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="text-4xl font-bold mb-2">35+</div>
+                    <div class="text-lg">Anos de história</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold mb-2">500+</div>
+                    <div class="text-lg">Famílias associadas</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold mb-2">120+</div>
+                    <div class="text-lg">Projetos realizados</div>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold mb-2">15+</div>
+                    <div class="text-lg">Parceiros comunitários</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="py-16 bg-gray-50" id="eventos">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-800 mb-4">Eventos Comunitários</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Participe dos nossos eventos que fortalecem a comunidade e promovem a integração entre os moradores do Saco Grande.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md event-card transition duration-300">
+                    <img src="https://via.placeholder.com/400x250" alt="Feira Comunitária" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Próximo</span>
+                            <span class="text-sm text-gray-500">15/10/2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Feira Comunitária do Saco Grande</h3>
+                        <p class="text-gray-600 mb-4">Feira com produtos locais, artesanato e comidas típicas da região.</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Praça Central do Saco Grande</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md event-card transition duration-300">
+                    <img src="https://via.placeholder.com/400x250" alt="Mutirão de Limpeza" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Em andamento</span>
+                            <span class="text-sm text-gray-500">05/11/2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Mutirão de Limpeza</h3>
+                        <p class="text-gray-600 mb-4">Junte-se a nós para manter nosso bairro limpo e preservar o meio ambiente.</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Encontro na sede da COMOSG</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Event 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md event-card transition duration-300">
+                    <img src="https://via.placeholder.com/400x250" alt="Workshop Sustentabilidade" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">Planejado</span>
+                            <span class="text-sm text-gray-500">20/11/2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Workshop de Sustentabilidade</h3>
+                        <p class="text-gray-600 mb-4">Aprenda práticas sustentáveis para aplicar no seu dia a dia.</p>
+                        <div class="flex items-center text-gray-500 text-sm">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            <span>Centro Comunitário do Saco Grande</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-blue-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
+                    Ver todos os eventos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="py-16 bg-white" id="noticias">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-800 mb-4">Notícias do Bairro</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Fique por dentro das últimas novidades e acontecimentos no Saco Grande.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- News 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md border border-gray-100">
+                    <img src="https://via.placeholder.com/400x250" alt="Melhorias na infraestrutura" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">12/09/2023</span>
+                        <h3 class="text-xl font-bold text-gray-800 my-2">Novas melhorias na infraestrutura do bairro</h3>
+                        <p class="text-gray-600 mb-4">A prefeitura anunciou investimentos em calçadas e iluminação pública para o Saco Grande.</p>
+                        <a href="#" class="text-blue-700 font-medium hover:underline">Ler mais</a>
+                    </div>
+                </div>
+                
+                <!-- News 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md border border-gray-100">
+                    <img src="https://via.placeholder.com/400x250" alt="Resultados da pesquisa" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">28/08/2023</span>
+                        <h3 class="text-xl font-bold text-gray-800 my-2">Resultados da pesquisa com moradores</h3>
+                        <p class="text-gray-600 mb-4">Conheça as principais demandas e sugestões dos moradores para o bairro.</p>
+                        <a href="#" class="text-blue-700 font-medium hover:underline">Ler mais</a>
+                    </div>
+                </div>
+                
+                <!-- News 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md border border-gray-100">
+                    <img src="https://via.placeholder.com/400x250" alt="Projeto ambiental" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-sm text-gray-500">15/08/2023</span>
+                        <h3 class="text-xl font-bold text-gray-800 my-2">COMOSG lança projeto ambiental</h3>
+                        <p class="text-gray-600 mb-4">Iniciativa visa preservar áreas verdes e conscientizar sobre descarte correto de resíduos.</p>
+                        <a href="#" class="text-blue-700 font-medium hover:underline">Ler mais</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-blue-800 text-blue-800 font-bold py-3 px-6 rounded-lg hover:bg-blue-800 hover:text-white transition duration-300">
+                    Ver todas as notícias
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-gray-50" id="contato">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-800 mb-4">Entre em Contato</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-3xl mx-auto">Tem dúvidas, sugestões ou quer se associar? Entre em contato conosco!</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-8">
+                    <form class="bg-white p-8 rounded-lg shadow-md">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nome</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">E-mail</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Assunto</label>
+                            <select id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Selecione um assunto</option>
+                                <option value="association">Associação à COMOSG</option>
+                                <option value="event">Eventos</option>
+                                <option value="suggestion">Sugestões</option>
+                                <option value="complaint">Reclamações</option>
+                                <option value="other">Outros</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Mensagem</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-lg shadow-md h-full">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Nossas Informações</h3>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-blue-700 mb-2">Endereço</h4>
+                            <p class="text-gray-700">Rua das Palmeiras, 123 - Saco Grande</p>
+                            <p class="text-gray-700">Florianópolis - SC, 88032-000</p>
+                            
+                            <div class="mt-4 map-container">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3535.997086834926!2d-48.50058892453738!3d-27.59350087617075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x952738248efc5a5f%3A0x9a1aef3c7db9a3a6!2sSaco%20Grande%2C%20Florian%C3%B3polis%20-%20SC!5e0!3m2!1spt-BR!2sbr!4v1689874567890!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold text-blue-700 mb-2">Contato</h4>
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-phone-alt text-blue-600 mr-3"></i>
+                                <span class="text-gray-700">(48) 3333-4444</span>
+                            </div>
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-envelope text-blue-600 mr-3"></i>
+                                <span class="text-gray-700">contato@comosg.org.br</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-clock text-blue-600 mr-3"></i>
+                                <span class="text-gray-700">Segunda a Sexta, das 9h às 17h</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="text-lg font-semibold text-blue-700 mb-2">Redes Sociais</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition duration-300">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-green-600 text-white p-3 rounded-full hover:bg-green-700 transition duration-300">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-12 bg-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4">Assine nossa newsletter</h2>
+                <p class="text-lg mb-8">Receba as últimas notícias e informações sobre eventos diretamente no seu e-mail.</p>
+                
+                <form class="flex flex-col sm:flex-row max-w-md mx-auto sm:max-w-xl">
+                    <input type="email" placeholder="Seu melhor e-mail" class="flex-grow px-4 py-3 rounded-lg sm:rounded-r-none text-gray-800 focus:outline-none mb-2 sm:mb-0">
+                    <button type="submit" class="bg-blue-600 text-white font-bold px-6 py-3 rounded-lg sm:rounded-l-none hover:bg-blue-700 transition duration-300">
+                        Assinar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">COMOSG</h3>
+                    <p class="text-gray-400">Associação Comunitária do Saco Grande, trabalhando pelo desenvolvimento e bem-estar do nosso bairro desde 1985.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-white transition duration-300">Início</a></li>
+                        <li><a href="#sobre" class="text-gray-400 hover:text-white transition duration-300">Sobre</a></li>
+                        <li><a href="#eventos" class="text-gray-400 hover:text-white transition duration-300">Eventos</a></li>
+                        <li><a href="#noticias" class="text-gray-400 hover:text-white transition duration-300">Notícias</a></li>
+                        <li><a href="#contato" class="text-gray-400 hover:text-white transition duration-300">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Documentos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Estatuto</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Atas de Reunião</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Relatórios Anuais</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Formulário de Associação</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contato</h4>
+                    <address class="not-italic text-gray-400">
+                        <p class="mb-2">Rua das Palmeiras, 123</p>
+                        <p class="mb-2">Saco Grande, Florianópolis - SC</p>
+                        <p class="mb-2">CEP: 88032-000</p>
+                        <p class="mb-2">contato@comosg.org.br</p>
+                        <p>(48) 3333-4444</p>
+                    </address>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 COMOSG - Associação Comunitária do Saco Grande. Todos os direitos reservados.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-blue-800 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission (example)
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Obrigado por sua mensagem! Entraremos em contato em breve.');
+                contactForm.reset();
+            });
+        }
+        
+        // Newsletter form submission (example)
+        const newsletterForm = document.querySelector('form[class="flex flex-col sm:flex-row max-w-md mx-auto sm:max-w-xl"]');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const emailInput = newsletterForm.querySelector('input[type="email"]');
+                alert(`Obrigado por assinar nossa newsletter! Você receberá nossas atualizações no e-mail ${emailInput.value}.`);
+                emailInput.value = '';
+            });
+        }
+    </script>
+</body>
+</html>
