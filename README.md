@@ -33,4 +33,9 @@ Este site tem como objetivo principal apresentar informações sobre a associaç
 1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/seu-usuario/comosg-site.git 
+git clone https://github.com/seu-usuario/comosg-site.git
+```
+2. **O site está totalmente feito com HTML, então pode apenas rodar no seu navegador:**
+```html
+index.html
+```
