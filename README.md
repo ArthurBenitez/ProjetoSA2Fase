@@ -2,8 +2,6 @@
 
 > **COMOSG** é a Associação de Moradores do bairro Saco Grande em Florianópolis. Este é o site oficial da comunidade, criado com tecnologia moderna e design futurista para conectar os moradores e promover o desenvolvimento sustentável do bairro.
 
-![Screenshot](https://images.unsplash.com/photo-1584473457406-6240484478c7?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80)
-
 ## 📌 Descrição 
 
 Este site tem como objetivo principal apresentar informações sobre a associação, eventos comunitários, serviços oferecidos aos moradores, além de permitir cadastro e login para acesso restrito. O design utiliza uma paleta futurista com cores neon, animações suaves e responsividade total.
