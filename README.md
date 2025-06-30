@@ -1,6 +1,6 @@
 # 🌐 COMOSG - Saco Grande Florianópolis
 
-> **COMOSG** é a Associação de Moradores do bairro Saco Grande em Florianópolis. Este é o site oficial da comunidade, criado com tecnologia moderna e design futurista para conectar os moradores e promover o desenvolvimento sustentável do bairro.
+> **COMOSG** é o Conselho de Moradores do bairro Saco Grande em Florianópolis. Este é o site oficial da comunidade, criado com tecnologia moderna e design futurista para conectar os moradores e promover o desenvolvimento sustentável do bairro.
 
 ## 📌 Descrição 
 
