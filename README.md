@@ -22,10 +22,8 @@ Este site tem como objetivo principal apresentar informações sobre a associaç
 ## 💻 Tecnologias Utilizadas
 
 - **HTML5 & Tailwind CSS** – Para estruturação e estilo visual moderno.
-- **JavaScript Vanilla** – Para interatividade básica (modais, navegação).
 - **Firebase Auth + Firestore** – Para autenticação e armazenamento futuro de dados.
 - **Google Fonts & Orbitron/Roboto** – Para tipografia diferenciada.
-- **SweetAlert2** – Para notificações elegantes.
 - **Google Maps Embed API** – Para localização do bairro.
 
 ## 🚀 Como Executar o Projeto
